@@ -1,13 +1,10 @@
 # Shebang. Executing bash via /usr/bin/env makes scripts more portable.
-snippet h "2> /dev/null" i
+snippet h "hide: 2> /dev/null" i
 	&> /dev/null
-snippet todo
+snippet todo "# TODO: $1"
 	# TODO: $1
-snippet e i
-	\${${1:}}
-snippet ee i
-	\$(${1:})
-# BASEDIR
+snippet dt ""
+	datetime=$(date '+%Y%m%d_%H%M%S')
 snippet b "${BASEDIR}"
 	${BASEDIR}
 snippet bd "BASEDIR=$(realpath $(dirname "$0")/..${1})"
@@ -35,22 +32,3 @@ snippet fm "function main() { ... }"
 
 	# EXECUTE =====================================================================
 	main ${@}
-# IF
-snippet ifz "if [[ -z ... ]]; then"
-	if [[ -z \${${1:}} ]]; then
-		_error "Var \$$1 is emmpty!"
-	else
-		_info "Var \$$1 has value \${$1}!"
-	fi
-snippet ifd "if [[ -d ... ]]; then"
-	if [[ ! -d \${${1:}} ]]; then
-		_error "File \${$1} not existant!"
-	else
-		_info "File \${$1} existant!"
-	fi
-snippet iff "if [[ -f $1 ]]; then"
-	if [[ ! -f \${${1:}} ]]; then
-		_error "File \${$1} not existant!"
-	else
-		_info "File \${$1} existant!"
-	fi
