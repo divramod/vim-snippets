@@ -1,0 +1,189 @@
+snippet h11 "# [b] ... ==="
+# [b] ${1}
+================================================================================
+${2}
+endsnippet
+
+snippet h22 "## [b] ... ---"
+## [b] ${1}
+--------------------------------------------------------------------------------
+${2}
+endsnippet
+
+snippet h33 "### [b] ... ..."
+### [b] ${1}
+================================================================================
+${2}
+endsnippet
+
+snippet h1 "# ... ==="
+# ${1}
+================================================================================
+${2}
+endsnippet
+
+snippet h2 "## ... ---"
+## ${1}
+--------------------------------------------------------------------------------
+${2}
+endsnippet
+
+snippet h3 "### ... ..."
+### ${1}
+================================================================================
+${2}
+endsnippet
+
+snippet 1 "1. [ ]" t
+1. [ ] ${1}
+endsnippet
+
+snippet ta "* [ ] @"
+* [ ] @
+endsnippet
+
+snippet tc "* [ ] cod:"
+* [ ] code: ${1}
+endsnippet
+
+snippet tn "* [ ] configure:"
+* [ ] configure: ${1}
+endsnippet
+
+snippet tm "* [ ] compare:"
+* [ ] compare: ${1}
+endsnippet
+
+snippet tt "* [ ] think:"
+* [ ] think: ${1}
+endsnippet
+
+snippet td "* [ ] docs:"
+* [ ] docs: ${1:}
+endsnippet
+
+snippet tf "* [ ] feat:"
+* [ ] feat: ${1:}
+endsnippet
+
+snippet tx "* [ ] fea:"
+* [ ] fix: ${1:}
+endsnippet
+
+snippet ti "* [ ] issue:"
+* [ ] issue: ${1:}
+endsnippet
+
+snippet tj "* [ ] @jan:"
+* [ ] @jan: ${1:}
+endsnippet
+
+snippet t "* [ ]"
+* [ ] ${1:}
+endsnippet
+
+snippet tr "* [ ] read:"
+* [ ] read: ${1:}
+endsnippet
+
+snippet ts "* [ ] research:"
+* [ ] research: ${1:}
+endsnippet
+
+snippet to "* [ ] too:"
+* [ ] too: ${1:}
+endsnippet
+
+snippet th "* [ ] hear:"
+* [ ] hear: ${1:}
+endsnippet
+
+snippet tw "* [ ] watch:"
+* [ ] watch: ${1:}
+endsnippet
+
+snippet pro "Project"
+# ${1} (Project)
+
+# Inbox
+endsnippet
+
+snippet tepy "test python"
+`!p
+snip.rv = snip.basename
+`
+endsnippet
+
+
+# ==============================================================================
+#
+snippet pron "project new"
+`wik_project_create`
+endsnippet
+
+
+# ==============================================================================
+# diary week
+# ==============================================================================
+
+snippet week "week" w
+# [ ] `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
+
+`cat ~/art/wik/tpl/week.md`
+endsnippet
+
+# ==============================================================================
+# diary days
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+snippet d0 "today" w
+# `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
+endsnippet
+
+# ------------------------------------------------------------------------------
+snippet d0f "today" w
+# [ ] `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
+
+`cat ~/art/wik/lis/goals.md`
+
+`cat ~/art/wik/tpl/day.md`
+endsnippet
+
+# ------------------------------------------------------------------------------
+snippet d1 "tomorrow" w
+# `env LC_ALL=en_US.utf8 date --date="tomorrow" "+%Y.%m.%d %A"`
+endsnippet
+
+# ------------------------------------------------------------------------------
+snippet d1f "tomorrow" w
+# [ ] `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
+
+`cat ~/art/wik/lis/goals.md`
+
+`cat ~/art/wik/tpl/day.md`
+endsnippet
+
+# ------------------------------------------------------------------------------
+snippet d2 "day: +2" w
+# `env LC_ALL=en_US.utf8 date --date="2 day" "+%Y.%m.%d %A"`
+endsnippet
+
+# ------------------------------------------------------------------------------
+snippet dm1 "day: -1" w
+# `env LC_ALL=en_US.utf8 date --date="1 day ago" "+%Y.%m.%d %A"`
+endsnippet
+
+# ------------------------------------------------------------------------------
+snippet dm2 "day: -2" w
+# `env LC_ALL=en_US.utf8 date --date="2 day ago" "+%Y.%m.%d %A"`
+endsnippet
+
+
+# ------------------------------------------------------------------------------
+snippet ll "Link" w
+[${1}](${2:})
+endsnippet
+
+# vim:ft=snippets:
+

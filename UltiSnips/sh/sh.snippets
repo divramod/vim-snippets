@@ -1,0 +1,481 @@
+# divramod sh snippets
+
+# ==============================================================================
+# VERBOSE
+# ==============================================================================
+
+snippet cll "cll"
+echo "$1: \${${1:}}"
+endsnippet
+
+snippet cl "echo cl"
+echo "$1"
+endsnippet
+
+snippet clc "echo clc"
+${1:}=${2}
+echo "$1: \${$1}"
+endsnippet
+
+snippet cle "echo clc"
+echo "$1: \${$1}" >> ${2}
+
+endsnippet
+
+snippet _a "_ask"
+_ask "${1}"
+endsnippet
+
+snippet _c "_cmd"
+_cmd "${1}"
+endsnippet
+
+snippet _d "_debug"
+_debug "${1}"
+endsnippet
+
+snippet _dd "_debug $ $"
+_debug "$1: \${${1:}}"
+endsnippet
+
+snippet _dt "_debug_text"
+_debug_text "${1}"
+endsnippet
+
+snippet _e "_error $"
+_error "${1}"
+endsnippet
+
+snippet _ee "_error $ $"
+_error "$1: \${${1:}}"
+endsnippet
+
+snippet _et "_error_text $"
+_error_text "${1}"
+endsnippet
+
+snippet _ett "_error_text $ $"
+_error_text "$1: \${${1:}}"
+endsnippet
+
+snippet _i "_info"
+_info "${1}"
+endsnippet
+
+snippet _ii "_info $ $"
+_info "$1: \${${1:}}"
+endsnippet
+
+snippet _it "_info_text"
+_info_text "${1}"
+endsnippet
+
+snippet _itt "_info_text $ $"
+_info_text "$1: \${${1:}}"
+endsnippet
+
+snippet _l "_log"
+_log "${1}"
+endsnippet
+
+snippet _ll "_log $ $"
+_log "$1: \${${1:}}"
+endsnippet
+
+snippet _o "_ok"
+_ok "${1}"
+endsnippet
+
+snippet _oo "_ok $ $"
+_ok "$1: \${${1:}}"
+endsnippet
+
+snippet _ot "_ok_text"
+_ok_text "${1}"
+endsnippet
+
+snippet _ott "_ok_text $ $"
+_ok_text "$1: \${${1:}}"
+endsnippet
+
+snippet _r "_read"
+_read "${1}"
+endsnippet
+
+snippet _ry "_read_y"
+_read_y "${1}"
+endsnippet
+
+snippet _w "_warn"
+_warn "${1}"
+endsnippet
+
+snippet _ww "_warn $ $"
+_warn "$1: \${${1:}}"
+endsnippet
+
+snippet _wt "_warn_text"
+_warn_text "${1}"
+endsnippet
+
+snippet _wtt "_warn_text $ $"
+_warn_text "$1: \${${1:}}"
+endsnippet
+
+
+# ==============================================================================
+# COMMON
+# ==============================================================================
+
+snippet fig "figlet"
+`figlet_helper`
+endsnippet
+
+snippet b "#!/bin/bash" w
+#!/bin/bash
+endsnippet
+
+snippet v "${var} expand w/" i
+"\${${1}}${2}"
+endsnippet
+
+snippet t "# TODO: " i
+# TODO: ${1}
+endsnippet
+
+snippet $ "${var} expand with" i
+\${${1}}
+endsnippet
+
+snippet ( "$()" i
+\$(${1})
+endsnippet
+
+snippet ) "'$()'" i
+"\$(${1}${2})"
+endsnippet
+
+snippet := "" i
+: "\${${1}:="${2}"}"
+endsnippet
+
+snippet :- "" i
+: "\${${1}:-}"
+endsnippet
+
+# ==============================================================================
+# IF
+# ==============================================================================
+
+snippet icc "if [[ -z|n|... ]]" i
+if [[ -${1} "\${${2}}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet ic "[ -z|n|... ] &&" i
+[ -${1} "\${${2}}" ] &&
+	${3}
+fi
+endsnippet
+
+snippet iff "if [[ -f... ]]" i
+if [[ -f "\${${2}}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet if "if" i
+if [[ "\${${1}}" = "${2}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet ifn "" i
+if [[ -n "\${${2}}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet idd "if [[ -d... ]]" i
+if [[ -d "\${${2}}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet id "[ -d... ] &&" i
+[ -d "\${${1}}" ] &&
+	${2}
+fi
+endsnippet
+
+snippet inn "if [[ -n... ]]" i
+if [[ -n "\${${2}}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet in "[ -n... ] &&" i
+[ -n "\${${1}}" ] &&
+	${2}
+fi
+endsnippet
+
+snippet itt "if [ var = true ]" i
+if [ "\${${2}}" = true ]; then
+	${3}
+fi
+endsnippet
+
+snippet it "if [ var = true ]" i
+[ "\${${2}}" = true ] &&
+	${3}
+endsnippet
+
+snippet izz "if [[ -z... ]]" i
+if [[ -z "\${${2}}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet iz "[ -z ... ] &&" i
+[ -z "\${${1}}" ] &&
+  ${2}
+endsnippet
+
+snippet ievv "if [[ var = '' ]]" i
+if [[ "\${${1}}" = "\${${2}}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet iev "[ var = '' ] &&" i
+[ "\${${1}}" = "\${${2}}" ] &&
+	${3}
+fi
+endsnippet
+
+snippet iee "if [[ var = '' ]]" i
+if [[ "\${${1}}" = "${2}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet ie "[ var = '' ] &&" i
+[ "\${${1}}" = "${2}" ] &&
+	${3}
+fi
+endsnippet
+
+# ==============================================================================
+# FUNCTIONS
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+snippet fu "function"
+${1:}() {
+  echo "Running $1()"
+}
+endsnippet
+
+# ------------------------------------------------------------------------------
+snippet fu_ "function"
+${1:}() {
+  _info "Running $1()"
+}
+endsnippet
+
+# ==============================================================================
+# BINARIES
+# ==============================================================================
+
+snippet bv "binary var"
+: "\${${1:}:="${2:}"}"           # ${3:}
+endsnippet
+
+snippet bo "binary OPT"
+${1:}) OPT_${2:}="" ;;
+endsnippet
+
+snippet boa "binary OPTARG"
+${1:}) OPT_${2:}="\${OPTARG}" ;;
+endsnippet
+
+snippet bc "binary CASE"
+"${1:}") ${2:} ;;
+endsnippet
+
+snippet binary-example "binary example"
+#!/bin/bash
+set -eu -o pipefail
+
+# PATHS
+: "${PATH_BASE:="$(git rev-parse --show-toplevel)"}"
+
+# OPTIONS
+: "${ACTION:="?"}"                   # Action
+: "${OPT_TEST:=""}"                  # -t
+
+# VARIABLES
+: "${ENV_TEST:=""}"                  # Environment Variable
+: "${FILE_TEST:=""}"                 # File Path
+
+# IMPORTS
+source "${PATH_BASE}/scripts/libs/verbose.sh"
+
+example_function() {
+  _info "Running: example_function()"
+
+  local -r path_pwd="$(pwd)"
+  local file_test="${path_pwd}/test.txt"
+
+  file_test="${path_pwd}/test1.txt"
+
+  _info "path_pwd: ${path_pwd}"
+  _info "file_pwd: ${file_test}"
+
+  if [ -n "${ENV_TEST}" ]; then
+    _info "ENV_TEST: ${ENV_TEST}"
+  fi
+}
+
+main_environment() {
+  _info "Running: main_environment()"
+
+  if [ -n "${OPT_TEST}" ]; then
+    ENV_TEST="${OPT_TEST}"
+  fi
+}
+
+main_usage() {
+  local -r message="\${1:-""}"
+
+  [ -n "${message}" ] &&
+    echo -e "\n\033[31m■■\033[0m \033[1m${message}\033[0m\n"
+  cat <<-EOTXT
+main_usage:
+  ${1:} [options]
+
+Options:
+  -t STRING       (TODO) Test
+  -h              Help
+
+Actions:
+  -T              Test
+EOTXT
+  [ -z "${message}" ] && exit 0 || exit 1
+}
+
+main_arguments() {
+  local -r arg_man="\${1:-}"
+
+  if [ "${arg_man}" = "man" ]; then
+    man "${PATH_BASE}/scripts/man/$1"
+    exit
+  fi
+
+  while getopts t:T opt; do
+    case "${opt}" in
+    # options
+    t) OPT_TEST="${OPTARG}" ;;
+    T)
+      ACTION="${opt}" ;;
+    *) main_usage "You passed a non existant option! What is it you want to do?" ;;
+    esac
+  done
+  shift $((OPTIND - 1))
+}
+
+main() {
+  main_arguments "${@}"
+	main_environment
+
+  case "${ACTION}" in
+  "T") example_function ;;
+  "?") # Help when no Option
+    main_usage "You passed no option! What is it you want to do?"
+    ;;
+  esac
+}
+
+[[ "\${0}" == "${BASH_SOURCE[0]}" ]] && main "${@}"
+endsnippet
+
+snippet binary-clean "binary clean"
+#!/bin/bash
+set -eu -o pipefail
+
+# PATHS
+: "${PATH_BASE:="$(git rev-parse --show-toplevel)"}"
+
+# OPTIONS
+: "${ACTION:="?"}"                   # Action
+
+# VARIABLES
+
+# IMPORTS
+source "${PATH_BASE}/scripts/libs/verbose.sh"
+
+main_environment() {
+  _info "Running: main_environment()"
+
+}
+
+main_usage() {
+  local -r message="\${1:-""}"
+
+  [ -n "${message}" ] &&
+    echo -e "\n\033[31m■■\033[0m \033[1m${message}\033[0m\n"
+  cat <<-EOTXT
+main_usage:
+  ${1:} [options]
+
+Options:
+  -h              Help
+
+Actions:
+EOTXT
+  [ -z "${message}" ] && exit 0 || exit 1
+}
+
+main_arguments() {
+  local -r arg_man="\${1:-}"
+
+  if [ "${arg_man}" = "man" ]; then
+    man "${PATH_BASE}/scripts/man/$1"
+    exit
+  fi
+
+  while getopts t:T opt; do
+    case "${opt}" in
+    # options
+    T)
+      ACTION="${opt}" ;;
+    *) main_usage "You passed a non existant option! What is it you want to do?" ;;
+    esac
+  done
+  shift $((OPTIND - 1))
+}
+
+main() {
+  main_arguments "${@}"
+	main_environment
+
+  case "${ACTION}" in
+  "?") # Help when no Option
+    main_usage "You passed no option! What is it you want to do?"
+    ;;
+  esac
+}
+
+[[ "\${0}" == "${BASH_SOURCE[0]}" ]] && main "${@}"
+endsnippet
+
+# ==============================================================================
+# SHELLCHECK
+# ==============================================================================
+snippet scd "shellcheck disable"
+# shellcheck disable=SC${1:}
+endsnippet
+
+# vim:ft=snippets:

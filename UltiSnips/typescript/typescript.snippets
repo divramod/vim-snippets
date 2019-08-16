@@ -1,0 +1,86 @@
+snippet cll "console.log('', $)" b
+console.log('$1', ${1:})
+endsnippet
+
+snippet cj "console.log('', JSON)" b
+console.log('$1', JSON.stringify(${1:}, null, 4))
+endsnippet
+
+snippet v "${}" i
+\${$0}
+endsnippet
+
+snippet c "${}" i
+\`\${$0}\`
+endsnippet
+
+snippet todo "" i
+// TODO: ${1:}
+endsnippet
+
+snippet fu "fucntion" i
+/** $1
+ * TODO:
+ */
+export function ${1:}() {
+
+}
+endsnippet
+
+snippet fua "async function" i
+/** $1
+ * TODO:
+ */
+export async function ${1:}() {
+
+}
+endsnippet
+
+snippet iml "import lodash"
+import { ${1} } from 'lodash'
+endsnippet
+
+snippet im "import"
+import { ${1} } from './${2}'
+endsnippet
+
+snippet ex "export"
+export { ${1} } from './${2}'
+endsnippet
+
+snippet d "destruct object"
+const { ${1} } = ${2}
+endsnippet
+
+snippet r "require"
+var ${1} = require('$1')
+endsnippet
+
+snippet imm "require moment"
+var moment = require('moment')
+endsnippet
+
+snippet ims "require shelljs"
+var sh = require('shelljs')
+endsnippet
+
+snippet te "test" i
+import { expect } from 'chai'
+import { ${1:} } from './../../../src/${2:}/$1'
+
+describe('$2/$1', function() {
+
+  it('${3}', function() {
+    const res = $1()
+    expect(res).to.equal(true)
+  })
+
+})
+endsnippet
+
+snippet it "it" i
+it('${1:}', function() {
+	const res = ${2:}()
+	expect(res).to.equal(true)
+})
+endsnippet
