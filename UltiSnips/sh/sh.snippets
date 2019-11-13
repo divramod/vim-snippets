@@ -8,6 +8,10 @@ snippet cll "cll"
 echo "$1: \${${1:}}"
 endsnippet
 
+snippet clc "clc"
+echo "[$1]: \$(${1:})"
+endsnippet
+
 snippet cl "echo cl"
 echo "$1"
 endsnippet
@@ -135,12 +139,24 @@ snippet b "#!/bin/bash" w
 #!/bin/bash
 endsnippet
 
-snippet v "${var} expand w/" i
+snippet v" "${var} expand w/" i
 "\${${1}}${2}"
 endsnippet
 
-snippet t "# TODO: " i
+snippet v "" i
+\${${1}}${2}
+endsnippet
+
+snippet to "# TODO: " i
 # TODO: ${1}
+endsnippet
+
+snippet tol "# TODO: --- logs " i
+# TODO: --- logs
+endsnippet
+
+snippet t "# * [ ] " i
+# * [ ] ${1}
 endsnippet
 
 snippet $ "${var} expand with" i
@@ -197,7 +213,13 @@ if [[ -n "\${${2}}" ]]; then
 fi
 endsnippet
 
-snippet idd "if [[ -d... ]]" i
+snippet ifd "" i
+if [[ -d "\${${2}}" ]]; then
+	${3}
+fi
+endsnippet
+
+snippet ifz "" i
 if [[ -d "\${${2}}" ]]; then
 	${3}
 fi
@@ -206,7 +228,6 @@ endsnippet
 snippet id "[ -d... ] &&" i
 [ -d "\${${1}}" ] &&
 	${2}
-fi
 endsnippet
 
 snippet inn "if [[ -n... ]]" i
