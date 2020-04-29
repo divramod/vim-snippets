@@ -12,22 +12,8 @@ snippet iss "issue with plan, done, inbox"
 ================================================================================
 endsnippet
 
-snippet h11 "# [b] ... ==="
-# [b] ${1}
-================================================================================
-${2}
-endsnippet
-
-snippet h22 "## [b] ... ---"
-## [b] ${1}
---------------------------------------------------------------------------------
-${2}
-endsnippet
-
-snippet h33 "### [b] ... ..."
-### [b] ${1}
-================================================================================
-${2}
+snippet day "2020.04.23 (HH:MM)"
+# `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"` (`env LC_ALL=en_US.utf8 date "+%H:%M"`)
 endsnippet
 
 snippet h1 "# ... ==="
@@ -36,16 +22,146 @@ snippet h1 "# ... ==="
 ${2}
 endsnippet
 
+snippet tld "## thingylabs diary"
+## @thingylabs diary arvid `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
+--------------------------------------------------------------------------------
+endsnippet
+
+snippet tlp "## thingylabs dayplan"
+## @thingylabs dayplan
+--------------------------------------------------------------------------------
+endsnippet
+
+snippet df "# 2020.02.10 ... ==="
+# `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"` (`env LC_ALL=en_US.utf8 date "+%H:%M"`)
+================================================================================
+
+## DAYLY
+--------------------------------------------------------------------------------
+- [ ] Thingylabs Diary
+- [ ] [Github Issues Gmail](https://mail.google.com/mail/u/0/#label/3-inbox%2Fgithub.com)
+- [ ] 10 Finger Technik
+- [ ] Push To Github
+- [ ] Dayplan Tomorrow (df, df1, df-1)
+
+## SCHEDULE
+--------------------------------------------------------------------------------
+
+## @thingylabs dayplan
+--------------------------------------------------------------------------------
+
+## @thingylabs diary arvid `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
+--------------------------------------------------------------------------------
+
+## ORGA WORK
+--------------------------------------------------------------------------------
+
+## ORGA PRIVATE
+--------------------------------------------------------------------------------
+
+## WAIT
+--------------------------------------------------------------------------------
+${1}
+endsnippet
+
+snippet df1 "# 2020.02.10 ... === + 1 day"
+# `env LC_ALL=en_US.utf8 date -d "+1 days" "+%Y.%m.%d %A"`
+================================================================================
+
+## DAYLY
+--------------------------------------------------------------------------------
+- [ ] Thingylabs Diary
+- [ ] [Github Issues Gmail](https://mail.google.com/mail/u/0/#label/3-inbox%2Fgithub.com)
+- [ ] 10 Finger Technik
+- [ ] Push To Github
+- [ ] Dayplan Tomorrow (df, df1, df-1)
+
+## SCHEDULE
+--------------------------------------------------------------------------------
+
+## @thingylabs dayplan
+--------------------------------------------------------------------------------
+
+## @thingylabs diary arvid `env LC_ALL=en_US.utf8 date -d "+1 days" "+%Y.%m.%d %A"`
+--------------------------------------------------------------------------------
+
+## ORGA WORK
+--------------------------------------------------------------------------------
+
+## ORGA PRIVATE
+--------------------------------------------------------------------------------
+
+## WAIT
+--------------------------------------------------------------------------------
+${1}
+endsnippet
+
+snippet df-1 "# 2020.02.10 ... === + 1 day"
+# `env LC_ALL=en_US.utf8 date -d "-1 days" "+%Y.%m.%d %A"`
+================================================================================
+
+## DAYLY
+--------------------------------------------------------------------------------
+- [ ] Thingylabs Diary
+- [ ] [Github Issues Gmail](https://mail.google.com/mail/u/0/#label/3-inbox%2Fgithub.com)
+- [ ] 10 Finger Technik
+- [ ] Push To Github
+- [ ] Dayplan Tomorrow (df, df1, df-1)
+
+## SCHEDULE
+--------------------------------------------------------------------------------
+
+## @thingylabs dayplan
+--------------------------------------------------------------------------------
+
+## @thingylabs diary arvid `env LC_ALL=en_US.utf8 date -d "-1 days" "+%Y.%m.%d %A"`
+--------------------------------------------------------------------------------
+
+## ORGA WORK
+--------------------------------------------------------------------------------
+
+## ORGA PRIVATE
+--------------------------------------------------------------------------------
+
+## WAIT
+--------------------------------------------------------------------------------
+${1}
+endsnippet
+
 snippet h2 "## ... ---"
 ## ${1}
 --------------------------------------------------------------------------------
 ${2}
 endsnippet
 
+snippet h2d "### ... ..."
+### `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"` (`env LC_ALL=en_US.utf8 date "+%H:%M"`)
+--------------------------------------------------------------------------------
+${1}
+endsnippet
+
 snippet h3 "### ... ..."
 ### ${1}
-================================================================================
+................................................................................
 ${2}
+endsnippet
+
+snippet h3d "### ... ..."
+### `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"` (`env LC_ALL=en_US.utf8 date "+%H:%M"`)
+................................................................................
+${1}
+endsnippet
+
+snippet t "* [ ]"
+- [ ] ${1:}
+endsnippet
+
+snippet tt "* [ ] [1] 2"
+- [ ] [${1}] ${2}
+endsnippet
+
+snippet f "[1] 2"
+[${1}]${2}
 endsnippet
 
 snippet 1 "1. [ ]" t
@@ -53,67 +169,59 @@ snippet 1 "1. [ ]" t
 endsnippet
 
 snippet ta "* [ ] @"
-* [ ] @
+- [ ] @
 endsnippet
 
 snippet tc "* [ ] cod:"
-* [ ] code: ${1}
+- [ ] code: ${1}
 endsnippet
 
 snippet tn "* [ ] configure:"
-* [ ] configure: ${1}
+- [ ] configure: ${1}
 endsnippet
 
 snippet tm "* [ ] compare:"
-* [ ] compare: ${1}
-endsnippet
-
-snippet tt "* [ ] think:"
-* [ ] think: ${1}
+- [ ] compare: ${1}
 endsnippet
 
 snippet td "* [ ] docs:"
-* [ ] docs: ${1:}
+- [ ] docs: ${1:}
 endsnippet
 
 snippet tf "* [ ] feat:"
-* [ ] feat: ${1:}
+- [ ] feat: ${1:}
 endsnippet
 
 snippet tx "* [ ] fea:"
-* [ ] fix: ${1:}
+- [ ] fix: ${1:}
 endsnippet
 
 snippet ti "* [ ] issue:"
-* [ ] issue: ${1:}
+- [ ] issue: ${1:}
 endsnippet
 
 snippet tj "* [ ] @jan:"
-* [ ] @jan: ${1:}
-endsnippet
-
-snippet t "* [ ]"
-* [ ] ${1:}
+- [ ] @jan: ${1:}
 endsnippet
 
 snippet tr "* [ ] read:"
-* [ ] read: ${1:}
+- [ ] read: ${1:}
 endsnippet
 
 snippet ts "* [ ] research:"
-* [ ] research: ${1:}
+- [ ] research: ${1:}
 endsnippet
 
 snippet to "* [ ] too:"
-* [ ] too: ${1:}
+- [ ] too: ${1:}
 endsnippet
 
 snippet th "* [ ] hear:"
-* [ ] hear: ${1:}
+- [ ] hear: ${1:}
 endsnippet
 
 snippet tw "* [ ] watch:"
-* [ ] watch: ${1:}
+- [ ] watch: ${1:}
 endsnippet
 
 snippet pro "Project"
@@ -170,15 +278,6 @@ snippet d1 "tomorrow" w
 endsnippet
 
 # ------------------------------------------------------------------------------
-snippet d1f "tomorrow" w
-# [ ] `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
-
-`cat ~/art/wik/lis/goals.md`
-
-`cat ~/art/wik/tpl/day.md`
-endsnippet
-
-# ------------------------------------------------------------------------------
 snippet d2 "day: +2" w
 # `env LC_ALL=en_US.utf8 date --date="2 day" "+%Y.%m.%d %A"`
 endsnippet
@@ -192,7 +291,6 @@ endsnippet
 snippet dm2 "day: -2" w
 # `env LC_ALL=en_US.utf8 date --date="2 day ago" "+%Y.%m.%d %A"`
 endsnippet
-
 
 # ------------------------------------------------------------------------------
 snippet ll "Link" w

@@ -1,8 +1,161 @@
 # divramod sh snippets
 
 # ==============================================================================
+# AWK
+# ==============================================================================
+snippet awk "awk '{}'"
+awk '{${1}}'
+endsnippet
+snippet a1 "awk '{print $1}'"
+awk '{print \$1}'
+endsnippet
+snippet a2 "awk '{print $2}'"
+awk '{print \$2}'
+endsnippet
+snippet a3 "awk '{print $3}'"
+awk '{print \$3}'
+endsnippet
+snippet a4 "awk '{print $4}'"
+awk '{print \$4}'
+endsnippet
+snippet a5 "awk '{print $5}'"
+awk '{print \$5}'
+endsnippet
+snippet a6 "awk '{print $6}'"
+awk '{print \$6}'
+endsnippet
+snippet a7 "awk '{print $7}'"
+awk '{print \$7}'
+endsnippet
+snippet a8 "awk '{print $8}'"
+awk '{print \$8}'
+endsnippet
+snippet a9 "awk '{print $9}'"
+awk '{print \$9}'
+endsnippet
+
+# ==============================================================================
+# COMMENTS
+# ==============================================================================
+
+snippet cm "# --- [?]"
+# --- [${1}] ${2}
+endsnippet
+
+# ==============================================================================
+# GETOPS
+# ==============================================================================
+
+snippet opts "getops"
+#!/usr/bin/env sh
+: "\${PATH_BASE:="\$(git rev-parse --show-toplevel)"}" 
+while getopts ":a:A" opt; do
+  case \${opt} in
+    a )
+      target=$OPTARG
+      echo "target: ${target}" 
+      ;;
+    A )
+      echo "Action: A"
+			;;
+    \? )
+      echo "Invalid option: $OPTARG" 1>&2
+      ;;
+    : )
+      echo "Invalid option: $OPTARG requires an argument" 1>&2
+      ;;
+  esac
+done
+shift \$((OPTIND -1))
+endsnippet
+
+# ==============================================================================
 # VERBOSE
 # ==============================================================================
+
+snippet 1 ">/dev/null 2&1"
+>/dev/null 2&1
+endsnippet
+
+snippet 2 "2>/dev/null"
+2>/dev/null
+endsnippet
+
+snippet p "${PATH_BASE}"
+${PATH_BASE} 
+endsnippet
+
+snippet ini "#!/bash"
+#!/usr/bin/env bash
+
+# --- [VARS]
+: "${PATH_BASE:="$(git rev-parse --show-toplevel)"}" 
+SECONDS=0
+
+# ==============================================================================
+cicd_log_h1 "${1:}"
+
+endsnippet
+
+snippet l- "# ------"
+# ------------------------------------------------------------------------------
+endsnippet
+
+snippet l= "# ======"
+# ==============================================================================
+endsnippet
+
+snippet l1 "cicd_log_h1"
+# ==============================================================================
+cicd_log_h1 "${1:}"
+endsnippet
+
+snippet l2 "cicd_log_h2"
+# ------------------------------------------------------------------------------
+cicd_log_h2 "[${1:}] ${2:}"
+${3:}
+cicd_log_time "${SECONDS}"
+endsnippet
+
+snippet li "cicd_log_time"
+cicd_log_time "${SECONDS}"
+endsnippet
+
+snippet ls "cicd_log_step"
+cicd_log_step "[${1:}] ${2:}"
+endsnippet
+
+snippet le "cicd_log_err"
+[[ "\${?}" == 1 ]] && cicd_log_step "[${1:}] [ERROR] ${2:}" && exit 1 
+endsnippet
+
+snippet a "awk"
+awk '{ print $${1:}; }'${2:}
+endsnippet
+
+snippet fd "find -type d"
+find -type d -name "${1}" 2>/dev/null
+endsnippet
+
+snippet ff "find -type f"
+find -type f -name "${1}" 2>/dev/null
+endsnippet
+
+snippet fff "for ... in find -type f ..."
+for file_${1:} in $(find -type f -name "${2}" 2>/dev/null); do
+  echo "file_$1: \${file_$1}" 
+done
+endsnippet
+
+snippet ffd "for ... in find -type d ..."
+for path_${1:} in $(find -type d -name "${2}" 2>/dev/null); do
+  echo "path_$1: \${path_$1}" 
+done
+endsnippet
+
+snippet pb "PATH_BASE" i
+: "\${PATH_BASE:="\$(git rev-parse --show-toplevel)"}"
+endsnippet
 
 snippet cll "cll"
 echo "$1: \${${1:}}"
@@ -135,16 +288,20 @@ snippet fig "figlet"
 `figlet_helper`
 endsnippet
 
-snippet b "#!/bin/bash" w
-#!/bin/bash
+snippet b "#!/usr/bin/env bash" w
+#!/usr/bin/env bash
 endsnippet
 
-snippet v" "${var} expand w/" i
-"\${${1}}${2}"
+snippet s "#!/usr/bin/env sh" w
+#!/usr/bin/env sh
 endsnippet
 
-snippet v "" i
+snippet v "${var} expand w/" i
 \${${1}}${2}
+endsnippet
+
+snippet v" "" i
+"\${${1}}"${2}
 endsnippet
 
 snippet to "# TODO: " i
@@ -201,6 +358,10 @@ if [[ -f "\${${2}}" ]]; then
 fi
 endsnippet
 
+snippet ifff "if [[ -f... ]]" i
+[[ -f "\${${1}}" ]]; ${2}
+endsnippet
+
 snippet if "if" i
 if [[ "\${${1}}" = "${2}" ]]; then
 	${3}
@@ -220,14 +381,13 @@ fi
 endsnippet
 
 snippet ifz "" i
-if [[ -d "\${${2}}" ]]; then
+if [[ -z "\${${2}}" ]]; then
 	${3}
 fi
 endsnippet
 
 snippet id "[ -d... ] &&" i
-[ -d "\${${1}}" ] &&
-	${2}
+[[ -d "\${${1}}" ]] && ${2}
 endsnippet
 
 snippet inn "if [[ -n... ]]" i
@@ -237,9 +397,7 @@ fi
 endsnippet
 
 snippet in "[ -n... ] &&" i
-[ -n "\${${1}}" ] &&
-	${2}
-fi
+[[ -n "\${${1}}" ]] && ${2}
 endsnippet
 
 snippet itt "if [ var = true ]" i
@@ -260,8 +418,7 @@ fi
 endsnippet
 
 snippet iz "[ -z ... ] &&" i
-[ -z "\${${1}}" ] &&
-  ${2}
+[[ -z "\${${1}}" ]] && ${2}
 endsnippet
 
 snippet ievv "if [[ var = '' ]]" i
