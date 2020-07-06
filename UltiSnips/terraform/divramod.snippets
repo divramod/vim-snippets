@@ -1,0 +1,20 @@
+snippet v "${var.1}" i
+\${var.${1:}}
+endsnippet
+
+snippet var "var"
+variable "${1}" {
+  type        = ${2} 
+  description = "${3}"
+  default     = "${4}"
+}
+endsnippet
+
+snippet proa "provider aws"
+provider "aws" {
+  version                 = "~> 2.60"
+  region                  = "${1}"
+  shared_credentials_file = "${pathexpand("~/.aws/credentials")}"
+  secret_access_key       = "default"
+}
+endsnippet

@@ -1,0 +1,52 @@
+# ==============================================================================
+# create command
+# ==============================================================================
+snippet dcc "[divramod] cobra add cmd"
+//Package cmd ...
+package cmd
+
+import (
+	"fmt"
+
+	"github.com/spf13/cobra"
+)
+
+// $1Cmd represents the test command
+var ${1:}Cmd = &cobra.Command{
+	Use:   "$1",
+	Short: "",
+	Long: \`\`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("$1 called")
+	},
+}
+
+func init() {
+	rootCmd.AddCommand($1Cmd)
+}
+endsnippet
+
+snippet dcs "[divramod] cobra add cmd --parent ..."
+//Package cmd ...
+package cmd
+
+import (
+	"fmt"
+
+	"github.com/spf13/cobra"
+)
+
+// $1Cmd represents the test command
+var ${1:}Cmd = &cobra.Command{
+	Use:   "${3:}",
+	Short: "",
+	Long: \`\`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("$1 called")
+	},
+}
+
+func init() {
+	${2:}Cmd.AddCommand($1Cmd)
+}
+endsnippet
