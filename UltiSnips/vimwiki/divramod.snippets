@@ -24,7 +24,7 @@ endsnippet
 ################################################################################
 # work
 ################################################################################
-snippet dftl "## thingylabs dayplan and diary"
+snippet tl "## thingylabs dayplan and diary"
 ## @thingylabs diary arvid `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
 --------------------------------------------------------------------------------
 endsnippet
@@ -33,20 +33,22 @@ endsnippet
 # me
 ################################################################################
 snippet df "# 2020.02.10 ... ==="
-# `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"` (`env LC_ALL=en_US.utf8 date "+%H:%M"`)
+# `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"` (`env LC_ALL=en_US.utf8 date "+%H:%M"`) ${1}
 ================================================================================
 
 ## daily
 --------------------------------------------------------------------------------
-- me prepare today (df, df1, df-1, dftl)
-- gmail emails
-- gmail github
-- track hours
-- thingylabs diary
-- push to github
-- read article
-- schedule tomorrow
-- 10 Finger Technik (10 min)
+- orga: me prepare today (df, df1, df-1, tl)
+- orga: gmail emails
+- orga: schedule tomorrow
+- work: ausgaben einpflegen
+- fin: tradingdiary
+- learn: 10 Finger Technik (5min)
+- work: gmail github
+- work: thingylabs diary
+- work: track hours
+- work: push to github master
+- learn: blockchain (2h)
 
 ## schedule today
 --------------------------------------------------------------------------------
@@ -54,12 +56,15 @@ snippet df "# 2020.02.10 ... ==="
 ## schedule tomorrow
 --------------------------------------------------------------------------------
 
+## errands
+--------------------------------------------------------------------------------
+
+## inbox
+--------------------------------------------------------------------------------
+
 ## orga
 --------------------------------------------------------------------------------
 
-## projects
---------------------------------------------------------------------------------
-${1}
 endsnippet
 
 snippet df1 "# 2020.02.10 ... === + 1 day"
