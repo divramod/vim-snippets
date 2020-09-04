@@ -29,6 +29,12 @@ snippet tl "## thingylabs dayplan and diary"
 --------------------------------------------------------------------------------
 endsnippet
 
+snippet dtr "## trading diary"
+## `env LC_ALL=en_US.utf8 date "+%Y.%m.%d"` `env LC_ALL=en_US.utf8 date "+%A" | head -c 1` ${1}
+--------------------------------------------------------------------------------
+${2}
+endsnippet
+
 ################################################################################
 # me
 ################################################################################
@@ -38,31 +44,27 @@ snippet df "# 2020.02.10 ... ==="
 
 ## daily
 --------------------------------------------------------------------------------
+- orga: start tracking (today) / finish tracking (yesterday)
 - orga: me prepare today (df, df1, df-1, tl)
-- orga: gmail emails
+- orga: schedule today
 - orga: schedule tomorrow
+- orga: gmail emails
+- orga: go through inbox
 - work: ausgaben einpflegen
-- fin: tradingdiary
-- learn: 10 Finger Technik (5min)
+- fin: tradingdiary / tradingactions
 - work: gmail github
 - work: thingylabs diary
-- work: track hours
-- work: push to github master
+- learn: drink water / 10 Finger Technik (5min)
+- work: push to github master (dev)
 - learn: blockchain (2h)
+
+## next actions today
+--------------------------------------------------------------------------------
 
 ## schedule today
 --------------------------------------------------------------------------------
 
 ## schedule tomorrow
---------------------------------------------------------------------------------
-
-## errands
---------------------------------------------------------------------------------
-
-## inbox
---------------------------------------------------------------------------------
-
-## orga
 --------------------------------------------------------------------------------
 
 endsnippet
