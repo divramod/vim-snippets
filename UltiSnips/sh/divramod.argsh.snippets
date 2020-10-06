@@ -48,15 +48,16 @@ endsnippet
 snippet ab "argsh boilerplate" b
 #!/usr/bin/env argsh
 # shellcheck shell=bash
-# argsh shell=bash source=./${1}vals/shared.sh
 set -eu -o pipefail
 
 # --- OPTIONS
 
 # --- ACTIONS
+# argsh(T|test):        des(Test.)
 
 # --- PATHS
-: "${PATH_BASE:="$(git rev-parse --show-toplevel)"}"
+: "${PATH_SCRIPT:="$(ds --scripts-path-script --scripts-script-source "${BASH_SOURCE[0]}")"}"
+: "${PATH_BASE:="$(ds --scripts-path-base --scripts-script-source "${BASH_SOURCE[0]}")"}"
 
 # --- VARIABLES
 
@@ -71,10 +72,15 @@ _main() {
 
   # actions
   for ACTION in ${ARGSH_ACTIONS}; do case "${ACTION}" in
+    T | test)            test_${1:} ;;
   esac; done
 }
 
 # --- FUNCTIONS
+
+test_$1() {
+  _debug
+}
 
 # --- VALIDATORS
 
