@@ -52,12 +52,12 @@ endsnippet
 
 snippet opts "getops"
 #!/usr/bin/env sh
-: "\${PATH_BASE:="\$(git rev-parse --show-toplevel)"}" 
+: "\${PATH_BASE:="\$(git rev-parse --show-toplevel)"}"
 while getopts ":a:A" opt; do
   case \${opt} in
     a )
       target=$OPTARG
-      echo "target: ${target}" 
+      echo "target: ${target}"
       ;;
     A )
       echo "Action: A"
@@ -86,14 +86,14 @@ snippet 2 "2>/dev/null"
 endsnippet
 
 snippet p "${PATH_BASE}"
-${PATH_BASE} 
+${PATH_BASE}
 endsnippet
 
 snippet ini "#!/bash"
 #!/usr/bin/env bash
 
 # --- [VARS]
-: "${PATH_BASE:="$(git rev-parse --show-toplevel)"}" 
+: "${PATH_BASE:="$(git rev-parse --show-toplevel)"}"
 SECONDS=0
 
 # ==============================================================================
@@ -130,7 +130,7 @@ cicd_log_step "[${1:}] ${2:}"
 endsnippet
 
 snippet le "cicd_log_err"
-[[ "\${?}" == 1 ]] && cicd_log_step "[${1:}] [ERROR] ${2:}" && exit 1 
+[[ "\${?}" == 1 ]] && cicd_log_step "[${1:}] [ERROR] ${2:}" && exit 1
 endsnippet
 
 snippet a "awk"
@@ -147,13 +147,13 @@ endsnippet
 
 snippet fff "for ... in find -type f ..."
 for file_${1:} in $(find -type f -name "${2}" 2>/dev/null); do
-  echo "file_$1: \${file_$1}" 
+  echo "file_$1: \${file_$1}"
 done
 endsnippet
 
 snippet ffd "for ... in find -type d ..."
 for path_${1:} in $(find -type d -name "${2}" 2>/dev/null); do
-  echo "path_$1: \${path_$1}" 
+  echo "path_$1: \${path_$1}"
 done
 endsnippet
 
@@ -162,7 +162,7 @@ snippet pb "PATH_BASE" i
 endsnippet
 
 snippet cll "cll"
-echo "$1: \${${1:}}"
+echo "${1:}: \${$1}"
 endsnippet
 
 snippet clc "clc"
