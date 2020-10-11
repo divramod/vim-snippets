@@ -1,3 +1,20 @@
+snippet ld "logger.debug(``)" b
+logger.debug(\`${1:}\`)
+endsnippet
+
+snippet ldd "logger.debug(`var: var`)" b
+logger.debug(\`${1:}: \${$1}\`)
+endsnippet
+
+snippet li "logger.info(``)" b
+logger.info(\`${1:}\`)
+endsnippet
+
+snippet lii "logger.info(`var: var`)" b
+logger.info(\`${1:}: \${$1}\`)
+endsnippet
+
+
 snippet cll "console.log('', $)" b
 console.log('$1', ${1:})
 endsnippet
@@ -22,20 +39,26 @@ snippet todo "" i
 // TODO: ${1:}
 endsnippet
 
-snippet fu "fucntion" i
-/** $1
- * TODO:
- */
+snippet f "function" i
+function ${1:}() {
+
+}
+
+endsnippet
+snippet fe "export function" i
 export function ${1:}() {
 
 }
 endsnippet
 
-snippet fua "async function" i
-/** $1
- * TODO:
- */
-export async function ${1:}() {
+snippet fa "export async function" i
+async function ${1:}(): Promise<any> {
+
+}
+endsnippet
+
+snippet fea "export async function" i
+export async function ${1:}(): Promise<any> {
 
 }
 endsnippet
@@ -68,17 +91,17 @@ snippet ims "require shelljs"
 var sh = require('shelljs')
 endsnippet
 
-snippet te "test" i
-import { expect } from 'chai'
-import { ${1:} } from './../../../src/${2:}/$1'
+snippet tf "ava test file" i
+import test from 'ava'
 
-describe('$2/$1', function() {
+test('${1:}', async t => {
+  t.is(false, true)
+})
+endsnippet
 
-  it('${3}', function() {
-    const res = $1()
-    expect(res).to.equal(true)
-  })
-
+snippet te "ava test" i
+test('${1:}', async t => {
+  t.is(false, true)
 })
 endsnippet
 
