@@ -1,0 +1,89 @@
+snippet a: "argsh variable" b
+: "\${${1:}:="${2:}"}"
+endsnippet
+
+snippet aa "argsh action"
+# argsh(${1:}):  ${4:} des(${3:}.)
+endsnippet
+
+snippet ac "argsh case" b
+${1:}) ${2} ;;
+endsnippet
+
+snippet af "argsh function" b
+${1:}() {
+  _debug
+}
+endsnippet
+
+snippet al "local -r ..." i
+local -r ${1}="${2:}"
+endsnippet
+
+snippet ad "argsh dummy option" b
+# argsh(a-dummy-option): env(A_DUMMY_OPTION) des() val()
+endsnippet
+
+snippet ao "argsh option" b
+# argsh(${1:}): ${2}env(${3:}) def(${4:}) des(${5:}.) val(${6:})
+endsnippet
+
+snippet as "argsh source"
+source "\${PATH_BASE}/scripts/${1}.sh"
+endsnippet
+
+snippet av "argsh validator" b
+_${1}() {
+  local -n opt="\${1}"
+  local -r default="\$(cat)"
+  [ ${2:} "\${default}" ] || {
+    echo "[ \${2} ] needs to be ${3}." 1>&2
+    return
+  }
+  # shellcheck disable=SC2034
+  opt="\${default}"
+}
+endsnippet
+
+snippet ab "argsh boilerplate" b
+#!/usr/bin/env argsh
+# shellcheck shell=bash
+set -eu -o pipefail
+
+# --- OPTIONS
+
+# --- ACTIONS
+# argsh(T|test):        des(Test.)
+
+# --- PATHS
+: "${PATH_SCRIPT:="$(ds --scripts-path-script --scripts-script-source "${BASH_SOURCE[0]}")"}"
+: "${PATH_BASE:="$(ds --scripts-path-base --scripts-script-source "${BASH_SOURCE[0]}")"}"
+
+# --- VARIABLES
+
+# --- IMPORTS
+source "${PATH_BASE}/scripts/libs/verbose.sh"
+source "${PATH_BASE}/scripts/libs/binaries.sh"
+source "${PATH_BASE}/scripts/libs/utilities.sh"
+
+# --- MAIN
+_main() {
+  # dependencies
+
+  # actions
+  for ACTION in ${ARGSH_ACTIONS}; do case "${ACTION}" in
+    T | test)            test_${1:} ;;
+  esac; done
+}
+
+# --- FUNCTIONS
+
+test_$1() {
+  _debug
+}
+
+# --- VALIDATORS
+
+# --- RUN
+[[ "\${0}" != "${BASH_SOURCE[0]}" ]] || _main "${@}"
+endsnippet

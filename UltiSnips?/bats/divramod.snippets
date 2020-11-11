@@ -1,0 +1,36 @@
+snippet bt "Bats test" b
+@test "[ $1 ] $2" {
+  run ${2:}
+  log_on_failure
+  ${3}
+  [ "\${status}" -eq 1 ]
+}
+endsnippet
+
+snippet bs "Bats test suite" b
+#!/usr/bin/env bats
+
+source scripts/tests/helper.bash
+
+@test "[ $1 ] check args integration" {
+  ARGSH_TEST="${1:}" run bats --tap "\${ARGSH_BATS}"
+  log_on_failure
+  [ "\${status}" -eq 0 ]
+}
+endsnippet
+
+snippet bl "Bats compare line" b
+[ "\${lines[${1:}]}" = "${2}" ]
+endsnippet
+
+snippet bo "Bats compare output" b
+[ "$output" = "${1}" ]
+endsnippet
+
+snippet bc "Bats compare contains" b
+[[ "\${lines[${1:}]}" == *"${2:}"* ]]
+endsnippet
+
+snippet bs "Bats status" b
+[ "\${status}" -eq 0 ]
+endsnippet
