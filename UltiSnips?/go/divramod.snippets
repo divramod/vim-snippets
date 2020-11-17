@@ -1,0 +1,157 @@
+# ==============================================================================
+# code
+# ==============================================================================
+snippet { "[divramod] {" i
+{
+	${1:}
+}
+endsnippet
+
+snippet } "[divramod] }" i
+{${1:}}
+endsnippet
+
+snippet [ "[divramod] [" i
+[
+	${1:}
+]
+endsnippet
+
+snippet ] "[divramod] ]" i
+[${1:}]
+endsnippet
+
+snippet ( "[divramod] (" i
+(
+	${1:}
+)
+endsnippet
+
+snippet ) "[divramod] )" i
+(${1:})
+endsnippet
+
+# ==============================================================================
+# if
+# ==============================================================================
+snippet ife "if err != nil"
+if err != nil {
+  ${1:}
+}
+endsnippet
+
+# ==============================================================================
+# function
+# ==============================================================================
+snippet f "divramod func"
+// $1 ...
+func ${1:}(${2:}) (${3:}error) {
+	${4}
+	return nil
+}
+endsnippet
+
+# ==============================================================================
+# package
+# ==============================================================================
+snippet p "package"
+// Package $1 ...
+package ${1:}
+endsnippet
+
+# ==============================================================================
+# fmt.Println
+# ==============================================================================
+snippet cl "fmt.Println"
+fmt.Println("${1}")
+endsnippet
+
+snippet cll "fmt.Println"
+fmt.Println("${1}:", $1)
+endsnippet
+
+snippet cle "fmt.Println(err)"
+fmt.Println("err:", errors.New(err))
+endsnippet
+
+# ==============================================================================
+# comments
+# ==============================================================================
+snippet cm "// ---"
+// --- ${1}
+endsnippet
+
+snippet cmr "// --- [return]"
+// --- [return] ${1}
+endsnippet
+
+snippet cms "// --- [set]"
+// --- [set] ${1}
+endsnippet
+
+snippet cml "// --- [log]"
+// --- [log] ${1}
+endsnippet
+
+snippet cmg "// --- [get]"
+// --- [get] ${1}
+endsnippet
+
+snippet cmc "// --- [check]"
+// --- [check] ${1}
+endsnippet
+
+snippet cmo "// --- [copy]"
+// --- [copy] ${1}
+endsnippet
+
+snippet cmh "// --- [choose]"
+// --- [choose] ${1}
+endsnippet
+
+snippet cmt "// --- TODO [$1]"
+// --- TODO [${1}] ${2}
+endsnippet
+
+# ==============================================================================
+# ulog
+# ==============================================================================
+snippet ls  "ulog.Suc(1)"
+ulog.Suc("${1}")
+endsnippet
+
+snippet lss  "ulog.Suc(1, 1)"
+ulog.Suc("$1: " + ${1})
+endsnippet
+
+snippet li  "ulog.Inf(1)"
+ulog.Inf("${1}")
+endsnippet
+
+snippet lii  "ulog.Inf(1, 1)"
+ulog.Inf("$1: " + ${1})
+endsnippet
+
+snippet lw  "ulog.War(1)"
+ulog.War("${1}")
+endsnippet
+
+snippet lww  "ulog.War(1, 1)"
+ulog.War("$1: " + ${1})
+endsnippet
+
+snippet le  "ulog.Err(1)"
+ulog.Err(err.Error())
+endsnippet
+
+snippet lee  "ulog.Err(1, 1)"
+ulog.Err("$1: " + ${1})
+endsnippet
+
+snippet ld  "ulog.Deb(1)"
+ulog.Deb("${1}")
+endsnippet
+
+snippet ldd  "ulog.Deb(1, 1)"
+ulog.Deb("$1: " + ${1})
+endsnippet

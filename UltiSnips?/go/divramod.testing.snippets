@@ -1,0 +1,44 @@
+################################################################################
+# [golang] testing
+################################################################################ 
+
+snippet tfi "[divramod] test init file"
+// Package $1 ...
+package ${1:}
+
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
+endsnippet
+
+################################################################################
+# [tests]
+################################################################################ 
+snippet t "[divramod] func Test"
+// Test$1 ...
+func Test${1:}(t *testing.T) {
+	err := $1()
+	assert.NotNil(t, err)
+}
+endsnippet
+
+################################################################################
+# [assert]
+################################################################################ 
+snippet an "[divramod] assert.Nil()"
+assert.Nil(t, ${1})
+endsnippet
+
+snippet at "[divramod] assert.IsType()"
+assert.IsType(t, ${1}, ${2})
+endsnippet
+
+snippet ae "[divramod] assert.Equal()"
+assert.Equal(t, ${1}, ${2})
+endsnippet
+
+snippet aen "[divramod] assert.Equal()"
+assert.NotEqual(t, ${1}, ${2})
+endsnippet
