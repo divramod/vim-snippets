@@ -1,0 +1,15 @@
+snippet stage "stage" b
+stage('${1:}') {
+	agent {
+		kubernetes {
+			label 'calponia-docker-$1'
+			defaultContainer 'docker'
+			yamlFile '.cicd/docker_runner.yaml'
+		}
+	}
+	steps {
+		build_stage('$1', "$GIT_COMMIT")
+	}
+}
+endsnippet
+

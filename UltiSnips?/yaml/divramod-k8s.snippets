@@ -24,9 +24,3 @@ snippet knslii "Namespace Labels 'istio-injection: enabled'"
 labels:
   istio-injection: enabled
 endsnippet
-
-snippet kv "var:"
-- name: ${1:}
-  objref: { apiVersion: v1, kind: ConfigMap, name: common }
-  fieldref: { fieldpath: data.$1 }
-endsnippet

@@ -16,12 +16,14 @@ snippet sl "source lib"
 snippet uc "utils command"
 	cmd="${1:}"
 	_cmd "${cmd}"
+
 # FUNCTIONS
 snippet f "function ${1:}() { ... }"
 	# $1() ----------------------------------------------------------------------
 	function ${1:}() {
 		${2:}
 	}
+
 snippet fm "function main() { ... }"
 	# main() -----------------------------------------------------------------------
 	function main() {
