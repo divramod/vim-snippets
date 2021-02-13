@@ -1,4 +1,4 @@
-################################################################################
+################################## #############################################
 # day and time
 ################################################################################
 snippet d "2020.04.23" i
@@ -25,10 +25,11 @@ endsnippet
 # work
 ################################################################################
 snippet tl "## thingylabs dayplan and diary"
-## @thingylabs diary arvid `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
+## @thingylabs diary arvid `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"` (??/${1}) ${2}
 --------------------------------------------------------------------------------
-- github emails
-- thingylabs diary
+x github emails
+x rocket chat
+x thingylabs diary
 - check failed runs and extract calpobot issues (plan fix)
 - open issues (plan fix)
 - plan day
@@ -45,28 +46,47 @@ endsnippet
 # me
 ################################################################################
 snippet df "# 2020.02.10 ... ==="
-# `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"` (`env LC_ALL=en_US.utf8 date "+%H:%M"`) ${1}
+# `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`${2} (`env LC_ALL=en_US.utf8 date "+%H:%M"`) ${1}
 ================================================================================
 
 ## daily
 --------------------------------------------------------------------------------
-- orga: start tracking (today) / finish tracking (yesterday)
-- orga: me prepare today (df, df1, df-1, tl)
-- orga: schedule today
-- orga: schedule tomorrow
-- orga: gmail emails
-- orga: go through inbox
-- work: ausgaben einpflegen
-- fin: tradingdiary / tradingactions
-- work: push to github master (dev)
-- thingylabs orga
-- learn: drink water / 10 Finger Technik (5min)
-- learn: blockchain (2h)
+- private:
+  - org: open daily
+  - org: schedule today [1]
+  - org: schedule tomorrow [1]
+  - org: start tracking (today) [2]
+  - org: gmail inbox [3]
+  - fin: expenses [4]
+  - org: na yesterday
+  - org: na file me_todo
+  - org: na dir bureau/todo
+- work:
+	- github emails
+	- rocket chat
+	- thingylabs diary
+	- cod: push to github master (dev)
+	- org: calponia
+	- lea: drink water / 10 Finger Technik (5min)
+- crypto:
+  - update balance [4]
+	- think about strategy
+- learn:
+	- blockchain
+	- trading
+	- react
 
-## dayplan
+## dayplan `env LC_ALL=en_US.utf8 date "+%Y.%m.%d %A"`
+--------------------------------------------------------------------------------
+`env LC_ALL=en_US.utf8 date "+%H:%M"`-
+
+## dayplan `env LC_ALL=en_US.utf8 date -d "+1 days" "+%Y.%m.%d %A"`
 --------------------------------------------------------------------------------
 
-## done
+## todo today
+--------------------------------------------------------------------------------
+
+## inbox today
 --------------------------------------------------------------------------------
 
 endsnippet
