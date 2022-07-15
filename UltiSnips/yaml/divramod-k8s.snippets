@@ -1,13 +1,19 @@
+snippet divtes "divramod test"
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ${1:}
+endsnippet
+
 # Kustomization
 # ==============================================================================
 snippet kk "Kustomization base"
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-commonLabels:
-  app.kubernetes.io/component: ${1:}
-
 resources:
+  - ${1:}
 endsnippet
 
 # Namespace

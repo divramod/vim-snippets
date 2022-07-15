@@ -1,0 +1,82 @@
+# FUNCTION
+# ==============================================================================
+snippet ffu "[fin] function" i
+# --- $1 ----------------------------------------------------------------------
+function ${1:}() {
+  _ch1 "${CLI_NAME} ${COMMAND} ${ACTION}"
+}
+endsnippet
+
+# VARIABLE / CASE
+# ==============================================================================
+snippet fa "[fin] variable" i
+CLI_${1:}="${$1:=EMPTY}"
+    -${2} | --${3}) CLI_$1="\${2}"; shift 2 ;;
+endsnippet
+
+# TEMPLATE 1
+# ==============================================================================
+snippet ft1 "[fin] template 1" i
+#!/usr/bin/env sh
+
+# --- ACTIONS -----------------------------------------------------------------
+ACTIONS=(${1:}) ACTION="\${2}" COMMAND="\${1}"
+_cli_actions "${ACTIONS}" "${ACTION}" "${COMMAND}"
+
+# --- VARS & SOURCE -----------------------------------------------------------
+source "${PATH_BASE}"/.envs/.env.dev
+
+# --- OPTIONS -----------------------------------------------------------------
+TEMP=$(getopt -o h --long help -n "${PROJECT_NAME} ${COMMAND}"  -- "$@" )
+if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi; eval set -- "$TEMP"
+while true; do case "\${1}" in
+    # --- own -------------------------------------------
+    # --- common -------------------------------------------
+    -h | --help ) echo "findus kind cluster help"; shift ;;
+    -- ) shift; break ;;
+    * ) break ;;
+esac; done
+
+# --- $1 ----------------------------------------------------------------------
+function $1() {
+  _ch1 "${CLI_NAME} ${COMMAND} ${ACTION}"
+	${2}
+}
+
+# --- RUN ----------------------------------------------------------------------
+eval "${ACTION}"
+endsnippet
+
+# TEMPLATE 2
+# ==============================================================================
+snippet ft2 "[fin] template 2" i
+#!/usr/bin/env sh
+
+# --- ACTIONS -----------------------------------------------------------------
+ACTIONS=($1) ACTION="\${3}" COMMAND="\${1} \${2}"
+_cli_actions "${ACTIONS}" "${ACTION}" "${COMMAND}"
+
+# --- VARS & SOURCE -----------------------------------------------------------
+source "${PATH_BASE}"/.envs/.env.dev
+
+# --- OPTIONS -----------------------------------------------------------------
+TEMP=$(getopt -o h --long help -n "${CLI_NAME} ${COMMAND}"  -- "$@" )
+if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi; eval set -- "$TEMP"
+while true; do case "\${1}" in
+    # --- own ----------------------------------------------
+
+    # --- common -------------------------------------------
+    -h | --help ) echo " help"; shift ;;
+    -- ) shift; break ;;
+    * ) break ;;
+esac; done
+
+# --- $1 -------------------------------------------------------------------
+function $1() {
+  _ch1 "${CLI_NAME} ${COMMAND} ${ACTION}"
+	${2}
+}
+
+# --- RUN ----------------------------------------------------------------------
+eval "${ACTION}"
+endsnippet

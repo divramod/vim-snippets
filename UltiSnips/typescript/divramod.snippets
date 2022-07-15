@@ -19,6 +19,10 @@ snippet cll "console.log('', $)" b
 console.log('$1', ${1:})
 endsnippet
 
+snippet cww "console.warn('', $)" b
+console.warn('$1', ${1:})
+endsnippet
+
 snippet cj "console.log('', JSON)" b
 console.log('$1', JSON.stringify(${1:}, null, 4))
 endsnippet
@@ -35,12 +39,12 @@ snippet c "${}" i
 \`\${$0}\`
 endsnippet
 
-snippet todo "" i
+snippet t "" i
 // TODO: ${1:}
 endsnippet
 
-snippet f "function" i
-function ${1:}() {
+snippet fu "function" i
+const ${1:} = () => {
 
 }
 
@@ -68,7 +72,11 @@ import { ${1} } from 'lodash'
 endsnippet
 
 snippet im "import"
-import { ${1} } from './${2}'
+import { ${2} } from '${1}'
+endsnippet
+
+snippet imm "import default"
+import ${2} from '${1}'
 endsnippet
 
 snippet ex "export"
@@ -83,7 +91,7 @@ snippet r "require"
 var ${1} = require('$1')
 endsnippet
 
-snippet imm "require moment"
+snippet imr "require moment"
 var moment = require('moment')
 endsnippet
 
@@ -105,9 +113,9 @@ test('${1:}', async t => {
 })
 endsnippet
 
-snippet it "it" i
-it('${1:}', function() {
-	const res = ${2:}()
-	expect(res).to.equal(true)
+snippet ti "it" i
+it('${1:}', async () => {
+	const res = await ${2:}(${3:})
+	expect(res).toEqual(true)
 })
 endsnippet
